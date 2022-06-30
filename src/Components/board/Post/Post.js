@@ -24,9 +24,7 @@ const Post = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const cookie = new Cookies();
-        const token = cookie.get('accessToken');
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
         const post = await axios.get(`http://localhost:8000/board/${id}/post`);
         setTitle(() => post.data.title);
         setWriter(() => post.data.writer);
@@ -38,20 +36,19 @@ const Post = () => {
     fetchData();
   });
   const onEditClick = (e) => {
+    console.log(e);
     document.location.replace(`/board/edit/${id}/post`);
   };
   const onRemoveClick = async (e) => {
-    //document.location.replace(`/board/remove/${id}/post`);
     try {
-      const cookie = new Cookies();
-      const token = cookie.get('accessToken');
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      console.log(id);
       await axios.delete(`http://localhost:8000/board/post?postId=${id}`);
       alert('게시글이 삭제되었습니다');
-      document.location.replace('/board');
+     // document.location.replace('/board');
     } catch (error) {
+      console.log(error)
       alert('인가된 사용자가 아닙니다. (프론트엔드 영역에서 다른 사용자의 글 수정 페이지 접근을 막아야 함)');
-      document.location.replace('/board');
+      //document.location.replace('/board');
     }
   };
   return (

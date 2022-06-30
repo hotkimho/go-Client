@@ -32,7 +32,7 @@ const CreatePost = () => {
         title,
         content,
       });
-      //document.location.replace('/board');
+      document.location.replace('/board');
     } catch (error) {
       alert('글쓰기 실패');
       console.log(error);

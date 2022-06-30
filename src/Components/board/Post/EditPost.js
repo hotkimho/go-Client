@@ -29,8 +29,6 @@ const EditPost = () => {
   const onSubmut = async (e) => {
     e.preventDefault();
     const cookies = new Cookies();
-    const token = cookies.get('accessToken');
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     try {
       const result = await axios.patch(`http://localhost:8000/board/post?postId=${id}`, {
         title,
@@ -48,7 +46,6 @@ const EditPost = () => {
   useState(() => {
     const fetchData = async () => {
       const cookies = new Cookies();
-      const token = cookies.get('accessToken');
       try {
         const result = await axios.get(`http://localhost:8000/board/${id}/post`);
         setTitle(() => result.data.title);

@@ -23,14 +23,21 @@ const Title = styled.div`
 const Board = () => {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
+  let isLogin;
+
+  if (localStorage.getItem("user") === null) {
+    isLogin = false;
+  }
+  else {
+    isLogin = true;
+  }
 
   const onPageChange = (page) => {
     setPage(page);
   };
   useEffect(() => {
     const fetchData = async () => {
-      const cookie = new Cookies();
-      const token = cookie.get('accessToken');
+
       const result = await axios.get(`http://localhost:8000/board?page=${page}`);
       console.log(result.data)
       setPosts(() => result.data);
@@ -51,7 +58,8 @@ const Board = () => {
         <RenderBoard posts={posts} />
         {/*<PostSearch setPosts={setPosts} />*/}
         <Link to='/board/post'>
-          <Button
+        {isLogin ?
+          (<Button
             style={{
               position: 'relative',
               top: '5px',
@@ -60,6 +68,16 @@ const Board = () => {
           >
             글쓰기
           </Button>
+          ) : null}
+          {/*<Button
+            style={{
+              position: 'relative',
+              top: '5px',
+              left: '80%',
+            }}
+          >
+            글쓰기
+          </Button>*/}
         </Link>
         <Pagination
           activePage={page}
