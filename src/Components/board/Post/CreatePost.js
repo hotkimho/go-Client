@@ -27,15 +27,12 @@ const CreatePost = () => {
   const onSubmut = async (e) => {
     e.preventDefault();
     let message;
-    const cookies = new Cookies();
-    const token = cookies.get('accessToken');
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     try {
       const result = await axios.post('http://localhost:8000/board/post', {
         title,
         content,
       });
-      document.location.replace('/board');
+      //document.location.replace('/board');
     } catch (error) {
       alert('글쓰기 실패');
       console.log(error);
