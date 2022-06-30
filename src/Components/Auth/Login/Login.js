@@ -29,11 +29,9 @@ const Login = () => {
         username: id,
         password: password,
       });
-      const token = result.data.token;
-      //  cookie.save;
-      //setAccessToken('accessToken', token);
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      document.location.replace('/');
+     localStorage.setItem("sessionId", result.data.SessionId);
+     localStorage.setItem("user", result.data.UserId);
+     document.location.replace('/');
     } catch (error) {
       alert('아이디 또는 비밀번호가 틀립니다. 다시 입력해주세요');
     }

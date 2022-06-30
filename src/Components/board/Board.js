@@ -31,11 +31,8 @@ const Board = () => {
     const fetchData = async () => {
       const cookie = new Cookies();
       const token = cookie.get('accessToken');
-      const result = await axios(`http://localhost:8000/board?page=${page}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const result = await axios.get(`http://localhost:8000/board?page=${page}`);
+      console.log(result.data)
       setPosts(() => result.data);
     };
     fetchData();

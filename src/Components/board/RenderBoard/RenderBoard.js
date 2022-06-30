@@ -31,6 +31,7 @@ const RenderBoard = ({ posts }) => {
         <TableHeaderTitle scope='col'>제목</TableHeaderTitle>
         <TableHeader scope='col'>글쓴이</TableHeader>
         <TableHeader scope='col'>날짜</TableHeader>
+        <TableHeader scope="col">조회수</TableHeader>
       </thead>
 
       {/* 게시글 내용 */}

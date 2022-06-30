@@ -2,8 +2,14 @@ import { Link, Route } from 'react-router-dom';
 import { Cookies } from 'react-cookie';
 
 const Header = () => {
-  const isLogin = new Cookies().get('accessToken');
+  let isLogin;
 
+  if (localStorage.getItem("user") === null) {
+    isLogin = false;
+  }
+  else {
+    isLogin = true;
+  }
   return (
     <header>
       <div className='px-3 py-2 bg-dark text-white'>

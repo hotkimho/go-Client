@@ -8,14 +8,8 @@ const TablePost = styled.tr`
 `;
 
 const BoardItem = ({ post }) => {
-  const { id, title, writer, created_at } = post;
-  const date = new Date(created_at);
-  const yaer = date.getFullYear();
-  const month = +date.getMonth() + 1;
-  const day = date.getDate();
-  const hour = date.getHours();
-  const minute = date.getMonth();
-  const parsingDate = yaer + '.' + month + '.' + day + ' ' + hour + ':' + minute;
+  const { id, title, writer, created_at, view} = post;
+  
 
   const onTitleClick = (e) => {
     document.location.replace(`/board/${id}/post`);
@@ -34,7 +28,8 @@ const BoardItem = ({ post }) => {
       </td>
       {/*</Link>*/}
       <td>{writer}</td>
-      <td>{parsingDate}</td>
+      <td>{created_at}</td>
+      <td>{view}</td>
     </TablePost>
   );
 };

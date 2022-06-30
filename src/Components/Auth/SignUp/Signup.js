@@ -37,6 +37,7 @@ const SignUp = () => {
 
   const onIdChange = (e) => {
     setId(e.target.value);
+    
   };
   const onPasswordChange = (e) => {
     setPassword(e.target.value);
@@ -46,12 +47,13 @@ const SignUp = () => {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
+    
     if (!(password === checkPassword)) {
       alert('비밀번호를 똑같이 입력해주세요');
       return;
     }
     try {
-      const result = await axios.post('http://localhost:8000/auth/signup', {
+      const result = await axios.post('http://127.0.0.1:8000/auth/signup', {
         username: id,
         password: password,
       });
