@@ -1,5 +1,6 @@
 import { Link, Route } from 'react-router-dom';
 import { Cookies } from 'react-cookie';
+import axios from 'axios';
 
 const Header = () => {
   let isLogin;
@@ -9,6 +10,22 @@ const Header = () => {
   }
   else {
     isLogin = true;
+  }
+
+  const  onLogoutClick = async(e) => {
+    e.preventDefault();
+    try {
+      const result = await axios.get('http://localhost:8000/auth/logout');
+      localStorage.removeItem("sessionId");
+      localStorage.removeItem("user");
+      console.log(result);
+      document.location.replace('/');
+    } catch (error) {
+      console.log(error);
+      localStorage.removeItem("sessionId");
+      localStorage.removeItem("user");
+      alert('로그아웃이 실패했습니다 다시 시도해주세요');
+    }
   }
   return (
     <header>
@@ -53,7 +70,7 @@ const Header = () => {
           <div className='text-end'>
             {isLogin ? (
               <Link to='/logout'>
-                <button type='button' className='btn btn-light text-dark me-2'>
+                <button type='button' onClick={onLogoutClick} className='btn btn-light text-dark me-2'>
                   Logout
                 </button>
               </Link>
