@@ -36,7 +36,7 @@ const RenderBoard = ({ posts }) => {
 
       {/* 게시글 내용 */}
       <TableBody>
-        {posts.map((post) => (
+        {posts && posts.map((post) => (
           <BoardItem post={post} />
         ))}
       </TableBody>
