@@ -15,7 +15,6 @@ const RegisterContainer = styled.div`
 const Login = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
-  const [accessToken, setAccessToken] = useCookies(['accessToken']);
   const onIdChange = (e) => {
     setId(e.target.value);
   };
@@ -25,9 +24,11 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await axios.post('http://hotkimho.com:8000/auth/login', {
+      const result = await axios.post('http://ec2-35-75-5-69.ap-northeast-1.compute.amazonaws.com:8000/auth/login', {
         username: id,
         password: password,
+      }, {
+        withCredentials: true
       });
      localStorage.setItem("sessionId", result.data.SessionId);
      localStorage.setItem("user", result.data.UserId);

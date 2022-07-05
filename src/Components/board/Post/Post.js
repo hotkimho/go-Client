@@ -25,7 +25,7 @@ const Post = () => {
     const fetchData = async () => {
       try {
 
-        const post = await axios.get(`http://hotkimho.com:8000/board/post?postId=${id}`);
+        const post = await axios.get(`http://http://ec2-35-75-5-69.ap-northeast-1.compute.amazonaws.com:8000/board/post?postId=${id}`);
         setTitle(() => post.data.title);
         setWriter(() => post.data.writer);
         setContent(() => post.data.content);

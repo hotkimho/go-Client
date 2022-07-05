@@ -53,10 +53,10 @@ const EditPost = () => {
           alert('인가된 사용자가 아닙니다. (프론트엔드 영역에서 다른 사용자의 글 수정 페이지 접근(버튼이 안보이게)을 막아야 함)');
           document.location.replace('/board');
         }
-        const result = await axios.get(`http://hotkimho.com:8000/board/post?postId=${id}`);
+        const result = await axios.get(`http://http://ec2-35-75-5-69.ap-northeast-1.compute.amazonaws.com:8000/board/post?postId=${id}`);
         setTitle(() => result.data.title);
         setContent(() => result.data.content);
-        
+
       } catch (error) {
         alert('게시글을 불러오는데 실패 했습니다.');
         document.location.replace('/board');
