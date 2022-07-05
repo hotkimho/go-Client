@@ -53,7 +53,7 @@ const SignUp = () => {
       return;
     }
     try {
-      const result = await axios.post('http://127.0.0.1:8000/auth/signup', {
+      const result = await axios.post('http://hotkimho.com:8000/auth/signup', {
         username: id,
         password: password,
       });

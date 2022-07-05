@@ -25,7 +25,7 @@ const Post = () => {
     const fetchData = async () => {
       try {
 
-        const post = await axios.get(`http://localhost:8000/board/post?postId=${id}`);
+        const post = await axios.get(`http://hotkimho.com:8000/board/post?postId=${id}`);
         setTitle(() => post.data.title);
         setWriter(() => post.data.writer);
         setContent(() => post.data.content);
@@ -42,7 +42,7 @@ const Post = () => {
   const onRemoveClick = async (e) => {
     try {
       console.log(id);
-      await axios.delete(`http://localhost:8000/board/post?postId=${id}`);
+      await axios.delete(`http://hotkimho.com:8000/board/post?postId=${id}`);
       alert('게시글이 삭제되었습니다');
       document.location.replace('/board');
     } catch (error) {

@@ -28,7 +28,7 @@ const CreatePost = () => {
     e.preventDefault();
     let message;
     try {
-      const result = await axios.post('http://localhost:8000/board/post', {
+      const result = await axios.post('http://hotkimho.com:8000/board/post', {
         title,
         content,
       });

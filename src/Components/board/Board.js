@@ -38,7 +38,7 @@ const Board = () => {
   useEffect(() => {
     const fetchData = async () => {
 
-      const result = await axios.get(`http://localhost:8000/board?page=${page}`);
+      const result = await axios.get(`http://hotkimho.com:8000/board?page=${page}`);
       console.log(result.data)
       setPosts(() => result.data);
     };
