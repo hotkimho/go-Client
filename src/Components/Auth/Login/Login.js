@@ -23,8 +23,9 @@ const Login = () => {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
+    console.log("start login");
     try {
-      const result = await axios.post('http://ec2-35-75-5-69.ap-northeast-1.compute.amazonaws.com:8000/auth/login', {
+      const result = await axios.post('https://api.hotkimho.com/auth/login', {
         username: id,
         password: password,
       }, {
@@ -32,7 +33,8 @@ const Login = () => {
       });
      localStorage.setItem("sessionId", result.data.SessionId);
      localStorage.setItem("user", result.data.UserId);
-     document.location.replace('/');
+     console.log(result);
+     //document.location.replace('/');
     } catch (error) {
       alert('아이디 또는 비밀번호가 틀립니다. 다시 입력해주세요');
     }

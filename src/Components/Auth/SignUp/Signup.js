@@ -53,10 +53,11 @@ const SignUp = () => {
       return;
     }
     try {
-      const result = await axios.post('http://ec2-35-75-5-69.ap-northeast-1.compute.amazonaws.com:8000/auth/signup', {
+      const result = await axios.post('https://api.hotkimho.com/auth/signup', {
         username: id,
         password: password,
       });
+      console.log(result);
       alert('회원가입이 완료 되었습니다.');
       document.location.replace('/');
     } catch (error) {

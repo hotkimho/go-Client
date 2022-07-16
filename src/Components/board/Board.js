@@ -37,10 +37,15 @@ const Board = () => {
   };
   useEffect(() => {
     const fetchData = async () => {
-
-      const result = await axios.get(`http://http://ec2-35-75-5-69.ap-northeast-1.compute.amazonaws.com.com:8000/board?page=${page}`);
+      try {
+      const result = await axios.get(`https://api.hotkimho.com/board?page=${page}`, {
+        withCredentials: true
+      });
       console.log(result.data)
       setPosts(() => result.data);
+      } catch(error) {
+        console.log(error);
+      }
     };
     fetchData();
   }, [page]);
