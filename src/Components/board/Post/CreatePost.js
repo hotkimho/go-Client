@@ -28,7 +28,7 @@ const CreatePost = () => {
     e.preventDefault();
     let message;
     try {
-      const result = await axios.post('http://http://ec2-35-75-5-69.ap-northeast-1.compute.amazonaws.com:8000/board/post', {
+      const result = await axios.post('https://api.hotkimho.com/board/post', {
         title,
         content,
       });

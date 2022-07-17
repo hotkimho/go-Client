@@ -15,7 +15,7 @@ const Header = () => {
   const  onLogoutClick = async(e) => {
     e.preventDefault();
     try {
-      const result = await axios.get('http://http://ec2-35-75-5-69.ap-northeast-1.compute.amazonaws.com:8000/auth/logout');
+      const result = await axios.get('https://api.hotkimho.com/auth/logout');
       localStorage.removeItem("sessionId");
       localStorage.removeItem("user");
       console.log(result);
