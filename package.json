@@ -33,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "npm run build && aws s3 sync ./build s3://ho-client --profile=kimho && npm run invalidation",
-    "invalidation": "aws cloudfront create-invalidation --profil=kimho --distribution-id E128RUX907RPXV --paths /*"
+    "invalidation": "aws cloudfront create-invalidation --profil=kimho --distribution-id E128RUX907RPXV --paths '/*'"
   },
   "eslintConfig": {
     "extends": [
