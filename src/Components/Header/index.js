@@ -16,13 +16,11 @@ const Header = () => {
     e.preventDefault();
     try {
       const result = await axios.get('https://api.hotkimho.com/auth/logout');
-      localStorage.removeItem("sessionId");
       localStorage.removeItem("user");
       console.log(result);
       document.location.replace('/');
     } catch (error) {
       console.log(error);
-      localStorage.removeItem("sessionId");
       localStorage.removeItem("user");
       alert('로그아웃이 실패했습니다 다시 시도해주세요');
     }

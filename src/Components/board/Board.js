@@ -41,7 +41,6 @@ const Board = () => {
       const result = await axios.get(`https://api.hotkimho.com/board?page=${page}`, {
         withCredentials: true
       });
-      console.log(result.data)
       setPosts(() => result.data);
       } catch(error) {
         console.log(error);

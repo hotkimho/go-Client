@@ -30,9 +30,8 @@ const Login = () => {
       }, {
         withCredentials: true
       });
-     localStorage.setItem("sessionId", result.data.SessionId);
-     localStorage.setItem("user", result.data.UserId);
-     document.location.replace('/');
+      localStorage.setItem("user", result.data.UserId);
+      document.location.replace('/');
     } catch (error) {
       alert('아이디 또는 비밀번호가 틀립니다. 다시 입력해주세요');
     }

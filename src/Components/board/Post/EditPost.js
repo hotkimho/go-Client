@@ -47,8 +47,7 @@ const EditPost = () => {
     const fetchData = async () => {
       const cookies = new Cookies();
       try {
-        //전역 로그인을 관리하는 상태로 변경할 예정
-        //로그인이 안 되어있으면 접근이 불가능
+        //다시 유저를 조회해서 사용자가 맞는지 체크가 필요
         if (!localStorage.getItem("user")) {
           alert('인가된 사용자가 아닙니다. (프론트엔드 영역에서 다른 사용자의 글 수정 페이지 접근(버튼이 안보이게)을 막아야 함)');
           document.location.replace('/board');
