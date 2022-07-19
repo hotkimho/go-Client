@@ -23,7 +23,7 @@ const Title = styled.div`
 const Board = () => {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
-  let isLogin;
+  let isLogin = false;
 
   if (localStorage.getItem("user") === null) {
     isLogin = false;
@@ -38,7 +38,7 @@ const Board = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-      const result = await axios.get(`https://api.hotkimho.com/board?page=${page}`, {
+      const result = await axios.get(`http://localhost:8000/board?page=${page}`, {
         withCredentials: true
       });
       setPosts(() => result.data);

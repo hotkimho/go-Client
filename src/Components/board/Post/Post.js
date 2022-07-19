@@ -6,6 +6,7 @@ import axios from 'axios';
 import qs from 'qs';
 import { useParams } from 'react-router-dom';
 import queryString from 'query-string';
+import Comment from '../Comment/Comment';
 
 const PostContainer = styled.div`
   width: 500px;
@@ -15,16 +16,40 @@ const PostContainer = styled.div`
   left: 20%;
 `;
 
+const CommentContainer = styled.div`
+  width: 400px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 45%;
+  left: 20%;
+  line-height: 1;
+  list-style: none;
+`;
 const Post = () => {
   const [title, setTitle] = useState('');
   const [writer, setWriter] = useState('');
   const [content, setContent] = useState('');
   const params = useParams();
   const id = params.id;
+  let isCurrentUser = false;
+
+  const comments = [
+    {
+    username: 'test',
+    content: 'content',
+    create_at: '',
+    },
+    {
+      username: 'test',
+      content: 'content',
+      create_at: '',
+    },
+  ];
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-
         const post = await axios.get(`https://api.hotkimho.com/board/post?postId=${id}`);
         setTitle(() => post.data.title);
         setWriter(() => post.data.writer);
@@ -52,6 +77,7 @@ const Post = () => {
     }
   };
   return (
+    <div>
     <PostContainer>
       <Form>
         <Form.Group className='mb-3' controlId='formBasicTitle'>
@@ -79,6 +105,11 @@ const Post = () => {
       </Button>
       <Button onClick={onRemoveClick}>삭제</Button>
     </PostContainer>
+    <CommentContainer>
+      <div>댓글</div>
+      <Comment comments={comments} />
+    </CommentContainer>
+    </div>
   );
 };
 
