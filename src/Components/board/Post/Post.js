@@ -17,7 +17,7 @@ const PostContainer = styled.div`
 `;
 
 const CommentContainer = styled.div`
-  width: 400px;
+  width: 700px;
   margin: 0;
   padding: 0;
   position: absolute;
@@ -38,12 +38,12 @@ const Post = () => {
     {
     username: 'test',
     content: 'content',
-    create_at: '',
+    create_at: '2020/04/06',
     },
     {
       username: 'test',
       content: 'content',
-      create_at: '',
+      create_at: '2019/04/06',
     },
   ];
 
@@ -106,7 +106,7 @@ const Post = () => {
       <Button onClick={onRemoveClick}>삭제</Button>
     </PostContainer>
     <CommentContainer>
-      <div>댓글</div>
+      <div>댓글 {comments.length}</div> <br />
       <Comment comments={comments} />
     </CommentContainer>
     </div>

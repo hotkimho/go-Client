@@ -10,10 +10,17 @@ const CommentItem = ({comment}) => {
 	return (
       <Card>
         <Card.Header>
-			{username}
+			<div>
+        <span  style={{float: 'left'}}>
+        {username}
+        </span>
+        <span  style={{float: 'right'}}>
+        {create_at}
+        </span>
+      </div>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
-          <Card.Body>Hello! I'm the body</Card.Body>
+          <Card.Body>content</Card.Body>
         </Accordion.Collapse>
       </Card>
 	)
