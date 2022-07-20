@@ -107,7 +107,7 @@ const Post = () => {
     </PostContainer>
     <CommentContainer>
       <div>댓글 {comments.length}</div> <br />
-      <Comment comments={comments} />
+      <Comment comments={comments} postId={id} />
     </CommentContainer>
     </div>
   );

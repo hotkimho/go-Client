@@ -5,6 +5,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 import Card from 'react-bootstrap/Card';
 
+
 const CommentItem = ({comment}) => {
 	const { username, content, create_at} = comment;
 	return (
@@ -20,9 +21,10 @@ const CommentItem = ({comment}) => {
       </div>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
-          <Card.Body>content</Card.Body>
+          <Card.Body>{content}</Card.Body>
         </Accordion.Collapse>
       </Card>
+
 	)
 }
 
