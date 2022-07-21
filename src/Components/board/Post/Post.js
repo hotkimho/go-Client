@@ -49,12 +49,12 @@ const Post = () => {
     const fetchData = async () => {
       try {
         //https://api.hotkimho.com/board/post?postId=${id}
-        const post = await axios.get(`http://localhost:8000/board/post?postId=${id}`);
+        const post = await axios.get(`https://api.hotkimho.com/board/post?postId=${id}`);
         setTitle(() => post.data.title);
         setWriter(() => post.data.writer);
         setContent(() => post.data.content);
 
-        const comment = await axios.get(`http://localhost:8000/board/post/comment?postId=${id}`);
+        const comment = await axios.get(`https://api.hotkimho.com/board/post/comment?postId=${id}`);
         setComments(comment.data);
       } catch (error) {
         console.log(error);

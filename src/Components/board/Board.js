@@ -38,7 +38,7 @@ const Board = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-      const result = await axios.get(`http://localhost:8000/board?page=${page}`, {
+      const result = await axios.get(`https://api.hotkimho.com/board?page=${page}`, {
         withCredentials: true
       });
       setPosts(() => result.data);
@@ -56,7 +56,7 @@ const Board = () => {
         <Title>게시판</Title>
         {/*
         게시판 카테고리
-        카테고리 프론음 코드는 있지만 적용은 하지 않음
+        카테고리 프론트 코드는 있지만 적용은 하지 않음
           <BoardCategory currentType={currentType} onCategoryClick={onCategoryClick}/>
           */}
         <RenderBoard posts={posts} />

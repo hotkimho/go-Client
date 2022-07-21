@@ -24,8 +24,7 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      //https://api.hotkimho.com/auth/login
-      const result = await axios.post('http://localhost:8000/auth/login', {
+      const result = await axios.post('https://api.hotkimho.com/auth/login', {
         username: id,
         password: password,
       }, {

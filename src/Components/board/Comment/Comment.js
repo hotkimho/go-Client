@@ -26,7 +26,7 @@ const Comment = ({comments, postId}) => {
 	}
 	const onButtonClick = async() => {
 		try {
-		const result = await axios.post('http://localhost:8000/board/post/comment', {
+		const result = await axios.post('https://api.hotkimho.com/board/post/comment', {
 			postId,
 			content,
 		});
