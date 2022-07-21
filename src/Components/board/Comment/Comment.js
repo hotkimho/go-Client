@@ -26,12 +26,18 @@ const Comment = ({comments, postId}) => {
 	}
 	const onButtonClick = async() => {
 		try {
-		const result = await axios.post('https://api.hotkimho.com/board/post/comment', {
+		const result = await axios.post('http://localhost:8000/board/post/comment', {
+			postId,
 			content,
 		});
+		setContent(() => "");
+		if (comments === null){
+			document.location.replace(`/board/${postId}/post`);
+		}
+		
 		} catch(error) {
 			alert('댓글 쓰기가 실패했습니다.');
-			console.log(error);
+			console.log('comment', error);
 		}
 	}
 
@@ -47,6 +53,7 @@ const Comment = ({comments, postId}) => {
         <Form.Control
           placeholder={commentPlaceholder}
 		  onChange={onContentChange}
+		  value={content}
         />
         <Button
 		variant="outline-secondary"

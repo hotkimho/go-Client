@@ -73,15 +73,6 @@ const Board = () => {
             글쓰기
           </Button>
           ) : null}
-          {/*<Button
-            style={{
-              position: 'relative',
-              top: '5px',
-              left: '80%',
-            }}
-          >
-            글쓰기
-          </Button>*/}
         </Link>
         <Pagination
           activePage={page}

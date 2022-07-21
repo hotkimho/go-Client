@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card';
 
 
 const CommentItem = ({comment}) => {
-	const { username, content, create_at} = comment;
+	const { username, content, created_at} = comment;
 	return (
       <Card>
         <Card.Header>
@@ -16,7 +16,7 @@ const CommentItem = ({comment}) => {
         {username}
         </span>
         <span  style={{float: 'right'}}>
-        {create_at}
+        {created_at}
         </span>
       </div>
         </Card.Header>

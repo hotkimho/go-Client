@@ -21,7 +21,7 @@ const CommentContainer = styled.div`
   margin: 0;
   padding: 0;
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 20%;
   line-height: 1;
   list-style: none;
@@ -30,30 +30,32 @@ const Post = () => {
   const [title, setTitle] = useState('');
   const [writer, setWriter] = useState('');
   const [content, setContent] = useState('');
-  const params = useParams();
-  const id = params.id;
-  let isCurrentUser = false;
-
-  const comments = [
-    {
-    username: 'test',
-    content: 'content',
-    create_at: '2020/04/06',
-    },
+  const [comments, setComments] = useState([
     {
       username: 'test',
       content: 'content',
-      create_at: '2019/04/06',
-    },
-  ];
-
+      create_at: '2020/04/06',
+      },
+      {
+        username: 'test',
+        content: 'content',
+        create_at: '2019/04/06',
+      },
+  ])
+  const params = useParams();
+  const id = params.id;
+  let isCurrentUser = false;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const post = await axios.get(`https://api.hotkimho.com/board/post?postId=${id}`);
+        //https://api.hotkimho.com/board/post?postId=${id}
+        const post = await axios.get(`http://localhost:8000/board/post?postId=${id}`);
         setTitle(() => post.data.title);
         setWriter(() => post.data.writer);
         setContent(() => post.data.content);
+
+        const comment = await axios.get(`http://localhost:8000/board/post/comment?postId=${id}`);
+        setComments(comment.data);
       } catch (error) {
         console.log(error);
       }
@@ -91,7 +93,7 @@ const Post = () => {
         </Form.Group>
 
         <Form.Group className='mb-3' controlId='formBasicContent'>
-          <h4>제목</h4>
+          <h4>내용</h4>
           <div>{content}</div>
         </Form.Group>
       </Form>
@@ -106,7 +108,7 @@ const Post = () => {
       <Button onClick={onRemoveClick}>삭제</Button>
     </PostContainer>
     <CommentContainer>
-      <div>댓글 {comments.length}</div> <br />
+      <div>댓글 {comments ? comments.length : 0}</div> <br />
       <Comment comments={comments} postId={id} />
     </CommentContainer>
     </div>
