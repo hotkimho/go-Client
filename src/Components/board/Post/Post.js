@@ -21,7 +21,7 @@ const CommentContainer = styled.div`
   margin: 0;
   padding: 0;
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 20%;
   line-height: 1;
   list-style: none;
@@ -30,18 +30,7 @@ const Post = () => {
   const [title, setTitle] = useState('');
   const [writer, setWriter] = useState('');
   const [content, setContent] = useState('');
-  const [comments, setComments] = useState([
-    {
-      username: 'test',
-      content: 'content',
-      create_at: '2020/04/06',
-      },
-      {
-        username: 'test',
-        content: 'content',
-        create_at: '2019/04/06',
-      },
-  ])
+  const [comments, setComments] = useState([]);
   const params = useParams();
   const id = params.id;
   let isCurrentUser = false;
